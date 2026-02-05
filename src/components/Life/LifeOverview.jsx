@@ -21,7 +21,7 @@ const LifeOverview = () => {
     const fetchLifeData = async () => {
       try {
         setLoading(true);
-        const response = await fetch('https://su-med-backend-35d3d951c74b.herokuapp.com/api/student-life/api/data/life_overview_data/');
+        const response = await fetch('https://med-backend-d61c905599c2.herokuapp.com/api/student-life/api/data/life_overview_data/');
         if (!response.ok) {
           throw new Error('Failed to fetch life overview data');
         }
@@ -67,8 +67,8 @@ const LifeOverview = () => {
 
   // Временные локальные изображения для демонстрации
   const fallbackPhotos = [
-    'https://su-med-backend-35d3d951c74b.herokuapp.com/media/news/images/IMG_0249.JPG',
-    'https://su-med-backend-35d3d951c74b.herokuapp.com/media/news/images/scholarship.jpg',
+    'https://med-backend-d61c905599c2.herokuapp.com/media/news/images/IMG_0249.JPG',
+    'https://med-backend-d61c905599c2.herokuapp.com/media/news/images/scholarship.jpg',
     // Добавляем placeholder'ы для остальных
     generatePlaceholder('Student Life 1'),
     generatePlaceholder('Student Life 2'),

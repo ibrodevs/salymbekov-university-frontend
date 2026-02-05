@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { localizeItems } from '../../utils/i18nHelpers';
 
-const API_BASE_URL = 'https://su-med-backend-35d3d951c74b.herokuapp.com/api';
+const API_BASE_URL = 'https://med-backend-d61c905599c2.herokuapp.com/api';
 
 const NewsPreview = ({ maxItems = 3 }) => {
   const { t, i18n } = useTranslation();
@@ -92,7 +92,7 @@ const NewsPreview = ({ maxItems = 3 }) => {
   const getImageUrl = (imagePath) => {
     if (!imagePath) return null;
     if (imagePath.startsWith('http')) return imagePath;
-    return `https://su-med-backend-35d3d951c74b.herokuapp.com${imagePath.startsWith('/') ? '' : '/'}${imagePath}`;
+    return `https://med-backend-d61c905599c2.herokuapp.com${imagePath.startsWith('/') ? '' : '/'}${imagePath}`;
   };
 
   const formatDate = (dateString) => {

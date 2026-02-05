@@ -78,7 +78,7 @@ const StudentRegulations = () => {
       setLoading(true);
       setError(null);
       
-      const response = await fetch('https://su-med-backend-35d3d951c74b.herokuapp.com/api/student-life/api/data/regulations_data/');
+      const response = await fetch('https://med-backend-d61c905599c2.herokuapp.com/api/student-life/api/data/regulations_data/');
       
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
@@ -116,7 +116,7 @@ const StudentRegulations = () => {
   const handleDownload = (url, filename) => {
     if (url && (url.startsWith('http') || url.startsWith('/media'))) {
       // Создаем правильный URL для скачивания
-      const downloadUrl = url.startsWith('http') ? url : `https://su-med-backend-35d3d951c74b.herokuapp.com${url}`;
+      const downloadUrl = url.startsWith('http') ? url : `https://med-backend-d61c905599c2.herokuapp.com${url}`;
       window.open(downloadUrl, '_blank');
     } else {
       // Показываем сообщение, что файл недоступен

@@ -60,7 +60,7 @@ const Internships = () => {
       setLoading(true);
       setError(null);
 
-      const response = await fetch('https://su-med-backend-35d3d951c74b.herokuapp.com/api/student-life/api/data/internships_data/');
+      const response = await fetch('https://med-backend-d61c905599c2.herokuapp.com/api/student-life/api/data/internships_data/');
 
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
@@ -85,7 +85,7 @@ const Internships = () => {
       window.open(template.download_url, '_blank');
     } else if (template.file && (template.file.startsWith('http') || template.file.startsWith('/media'))) {
       // Fallback для старых файлов
-      const downloadUrl = template.file.startsWith('http') ? template.file : `https://su-med-backend-35d3d951c74b.herokuapp.com${template.file}`;
+      const downloadUrl = template.file.startsWith('http') ? template.file : `https://med-backend-d61c905599c2.herokuapp.com${template.file}`;
       window.open(downloadUrl, '_blank');
     } else {
       // Показываем сообщение, что файл недоступен

@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 // Base configuration for infrastructure API calls
-const baseURL = 'https://su-med-backend-35d3d951c74b.herokuapp.com/api/infrastructure';
+const baseURL = 'https://med-backend-d61c905599c2.herokuapp.com/api/infrastructure';
 
 export const infrastructureAPI = axios.create({
     baseURL,

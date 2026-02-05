@@ -35,8 +35,8 @@ const Regulations = () => {
       });
       
       const [documentsResponse, categoriesResponse] = await Promise.all([
-        fetch(`https://su-med-backend-35d3d951c74b.herokuapp.com/api/documents/?${documentsParams}`),
-        fetch('https://su-med-backend-35d3d951c74b.herokuapp.com/api/documents/categories/')
+        fetch(`https://med-backend-d61c905599c2.herokuapp.com/api/documents/?${documentsParams}`),
+        fetch('https://med-backend-d61c905599c2.herokuapp.com/api/documents/categories/')
       ]);
 
       if (!documentsResponse.ok || !categoriesResponse.ok) {

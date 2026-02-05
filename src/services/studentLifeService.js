@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_BASE_URL = import.meta.env.VITE_API_URL || 'https://su-med-backend-35d3d951c74b.herokuapp.com';
+const API_BASE_URL = import.meta.env.VITE_API_URL || 'https://med-backend-d61c905599c2.herokuapp.com';
 
 const api = axios.create({
     baseURL: `${API_BASE_URL}/api`,

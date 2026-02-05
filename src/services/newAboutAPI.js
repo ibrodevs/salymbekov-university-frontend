@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_BASE_URL = "https://su-med-backend-35d3d951c74b.herokuapp.com/api/about-section";
+const API_BASE_URL = "https://med-backend-d61c905599c2.herokuapp.com/api/about-section";
 
 // Create axios instance with default config
 const api = axios.create({

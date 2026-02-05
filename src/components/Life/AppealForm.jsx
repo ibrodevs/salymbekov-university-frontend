@@ -110,7 +110,7 @@ const AppealForm = () => {
       });
 
       // Отправляем на Django backend
-      const response = await fetch('https://su-med-backend-35d3d951c74b.herokuapp.com/api/student-life/api/student-appeals/', {
+      const response = await fetch('https://med-backend-d61c905599c2.herokuapp.com/api/student-life/api/student-appeals/', {
         method: 'POST',
         body: formDataToSend,
         // Не устанавливаем Content-Type, позволяем браузеру установить правильный
