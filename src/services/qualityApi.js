@@ -1,5 +1,5 @@
 // API функции для работы с системой менеджмента качества
-const API_BASE_URL = 'https://su-med-backend-35d3d951c74b.herokuapp.com/api';
+const API_BASE_URL = 'https://med-backend-d61c905599c2.herokuapp.com/api';
 
 /**
  * Получить все данные системы менеджмента качества

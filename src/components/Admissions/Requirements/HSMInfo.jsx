@@ -154,7 +154,7 @@ const HSMInfo = () => {
   const [factsLoading, setFactsLoading] = useState(true);
   useEffect(() => {
     setFactsLoading(true);
-    fetch('https://su-med-backend-35d3d951c74b.herokuapp.com/api/home/numbers/', {
+    fetch('https://med-backend-d61c905599c2.herokuapp.com/api/home/numbers/', {
       headers: {
         'Accept-Language': i18n.language === 'kg' ? 'ky' : i18n.language,
         'Content-Type': 'application/json'

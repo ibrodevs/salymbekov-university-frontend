@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 
 
-const API_URL = 'https://su-med-backend-35d3d951c74b.herokuapp.com/api/home/testimonials/';
+const API_URL = 'https://med-backend-d61c905599c2.herokuapp.com/api/home/testimonials/';
 
 const MedicalUniversityReviews = () => {
   const { t, i18n } = useTranslation();

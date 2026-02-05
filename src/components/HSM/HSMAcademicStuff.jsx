@@ -23,7 +23,7 @@ const PPSCard = () => {
 
   useEffect(() => {
     setLoading(true);
-    fetch('https://su-med-backend-35d3d951c74b.herokuapp.com/api/hsm/as-numbers/', {
+    fetch('https://med-backend-d61c905599c2.herokuapp.com/api/hsm/as-numbers/', {
       headers: {
         'Accept-Language': i18n.language === 'kg' ? 'ky' : i18n.language,
         'Content-Type': 'application/json',

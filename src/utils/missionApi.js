@@ -1,5 +1,5 @@
 // API configuration and utility functions for Mission Section
-const API_BASE_URL = import.meta.env.VITE_API_URL || 'https://su-med-backend-35d3d951c74b.herokuapp.com';
+const API_BASE_URL = import.meta.env.VITE_API_URL || 'https://med-backend-d61c905599c2.herokuapp.com';
 
 /**
  * Get the current language from i18next

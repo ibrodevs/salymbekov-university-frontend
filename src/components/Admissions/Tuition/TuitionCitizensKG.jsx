@@ -25,7 +25,7 @@ const TuitionCitizensKG = () => {
       setError(null);
       try {
         // Fees
-        const feesRes = await fetch('https://su-med-backend-35d3d951c74b.herokuapp.com/api/admissions/fees/?lang=' + i18n.language);
+        const feesRes = await fetch('https://med-backend-d61c905599c2.herokuapp.com/api/admissions/fees/?lang=' + i18n.language);
         let feesData = await feesRes.json();
         // Handle DRF pagination (object with .results)
         if (Array.isArray(feesData)) {
@@ -39,13 +39,13 @@ const TuitionCitizensKG = () => {
         }
 
         // Bank details
-        const bankRes = await fetch('https://su-med-backend-35d3d951c74b.herokuapp.com/api/admissions/bank-requisites-kg/?lang=' + i18n.language);
+        const bankRes = await fetch('https://med-backend-d61c905599c2.herokuapp.com/api/admissions/bank-requisites-kg/?lang=' + i18n.language);
         const bankData = await bankRes.json();
         let bankArr = Array.isArray(bankData) ? bankData : (bankData && Array.isArray(bankData.results) ? bankData.results : [bankData]);
         setBankDetails(bankArr[0]);
 
         // Contacts
-        const contactsRes = await fetch('https://su-med-backend-35d3d951c74b.herokuapp.com/api/admissions/contacts/?lang=' + i18n.language);
+        const contactsRes = await fetch('https://med-backend-d61c905599c2.herokuapp.com/api/admissions/contacts/?lang=' + i18n.language);
         const contactsData = await contactsRes.json();
         let contactsArr = Array.isArray(contactsData) ? contactsData : (contactsData && Array.isArray(contactsData.results) ? contactsData.results : [contactsData]);
         setContacts(contactsArr[0]);

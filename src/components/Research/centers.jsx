@@ -32,7 +32,7 @@ const Centers = () => {
   const fetchCenters = async () => {
     try {
       setLoading(true);
-      const response = await fetch('https://su-med-backend-35d3d951c74b.herokuapp.com/research/api/centers/');
+      const response = await fetch('https://med-backend-d61c905599c2.herokuapp.com/research/api/centers/');
       
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);

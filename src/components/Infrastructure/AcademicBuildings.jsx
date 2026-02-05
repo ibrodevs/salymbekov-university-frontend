@@ -15,7 +15,7 @@ const AcademicBuildings = () => {
     // Fetch academic buildings from Django API
     const fetchBuildings = async () => {
       try {
-        const response = await fetch('https://su-med-backend-35d3d951c74b.herokuapp.com/api/infrastructure/academic-buildings/');
+        const response = await fetch('https://med-backend-d61c905599c2.herokuapp.com/api/infrastructure/academic-buildings/');
         if (response.ok) {
           const data = await response.json();
           const buildingsData = data.results || data;

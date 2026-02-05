@@ -4,8 +4,8 @@ import { useTranslation } from 'react-i18next';
 import SEOComponent from '../SEO/SEOComponent';
 import SideMenu from '../common/SideMenu';
 
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'https://su-med-backend-35d3d951c74b.herokuapp.com/api';
-const MEDIA_BASE_URL = import.meta.env.VITE_MEDIA_BASE_URL || 'https://su-med-backend-35d3d951c74b.herokuapp.com';
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'https://med-backend-d61c905599c2.herokuapp.com/api';
+const MEDIA_BASE_URL = import.meta.env.VITE_MEDIA_BASE_URL || 'https://med-backend-d61c905599c2.herokuapp.com';
 
 const News = () => {
   const { t, i18n } = useTranslation();

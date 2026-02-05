@@ -1,5 +1,5 @@
 // API для подразделов расписания
-export const SCHEDULE_API_URL = 'https://su-med-backend-35d3d951c74b.herokuapp.com/api/schedule/subsections/';
+export const SCHEDULE_API_URL = 'https://med-backend-d61c905599c2.herokuapp.com/api/schedule/subsections/';
 
 export async function getScheduleSubsections(language = 'ru') {
   const lang = language === 'kg' ? 'ky' : language;

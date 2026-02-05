@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 // API для получения ссылок
-const LINKS_API_URL = 'https://su-med-backend-35d3d951c74b.herokuapp.com/api/home/navbar-links/';
+const LINKS_API_URL = 'https://med-backend-d61c905599c2.herokuapp.com/api/home/navbar-links/';
 import { useTranslation } from 'react-i18next';
 import LanguageSwitcher from './LanguageSwitcher';
 import DefaultLogo from "../assets/logo-salymbekov-university-site2.png";
@@ -10,7 +10,7 @@ import { getScheduleSubsections } from '../services/scheduleApi';
 // TODO: Если файл scheduleApi отсутствует, добавьте его с функцией getScheduleSubsections
 // Пример функции:
 // export async function getScheduleSubsections(lang) {
-//   const url = `https://su-med-backend-35d3d951c74b.herokuapp.com/api/schedule/subsections/?lang=${lang}`;
+//   const url = `https://med-backend-d61c905599c2.herokuapp.com/api/schedule/subsections/?lang=${lang}`;
 //   const res = await fetch(url);
 //   if (!res.ok) return [];
 //   return await res.json();

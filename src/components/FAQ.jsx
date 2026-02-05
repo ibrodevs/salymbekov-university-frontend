@@ -53,7 +53,7 @@ const FAQ = () => {
     setError(null);
     // Добавляем язык в query-параметр для принудительного обновления (и поддержки language-aware backend)
     const lang = (i18n.language || 'en').split('-')[0];
-    fetch(`https://su-med-backend-35d3d951c74b.herokuapp.com/api/admissions/faqs/?lang=${lang}`)
+    fetch(`https://med-backend-d61c905599c2.herokuapp.com/api/admissions/faqs/?lang=${lang}`)
       .then(res => {
         if (!res.ok) throw new Error('Network response was not ok');
         return res.json();

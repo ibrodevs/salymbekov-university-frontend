@@ -1,6 +1,6 @@
 // API сервис для работы с данными ВШМ (Высшая школа медицины)
 
-const API_BASE_URL = import.meta.env.VITE_API_URL || 'https://su-med-backend-35d3d951c74b.herokuapp.com';
+const API_BASE_URL = import.meta.env.VITE_API_URL || 'https://med-backend-d61c905599c2.herokuapp.com';
 
 
 class HSMService {

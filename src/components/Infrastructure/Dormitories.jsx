@@ -80,7 +80,7 @@ const Dormitories = () => {
         // Имитация загрузки с красивой анимацией
         await new Promise(resolve => setTimeout(resolve, 1500));
         
-        const response = await fetch('https://su-med-backend-35d3d951c74b.herokuapp.com/api/infrastructure/dormitories/');
+        const response = await fetch('https://med-backend-d61c905599c2.herokuapp.com/api/infrastructure/dormitories/');
         if (response.ok) {
           const data = await response.json();
           const dormitoriesData = Array.isArray(data.results) ? data.results : Array.isArray(data) ? data : [];

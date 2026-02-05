@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { Calendar, MapPin, Clock, Users } from 'lucide-react';
 import SideMenu from '../common/SideMenu';
 
-const API_BASE_URL = 'https://su-med-backend-35d3d951c74b.herokuapp.com/api';
+const API_BASE_URL = 'https://med-backend-d61c905599c2.herokuapp.com/api';
 
 const NewsEvents = () => {
   const { t, i18n } = useTranslation();
@@ -133,7 +133,7 @@ const NewsEvents = () => {
               {event.image_url ? (
                 <div className="relative">
                   <img 
-                    src={event.image_url?.startsWith('http') ? event.image_url : `https://su-med-backend-35d3d951c74b.herokuapp.com${event.image_url}`} 
+                    src={event.image_url?.startsWith('http') ? event.image_url : `https://med-backend-d61c905599c2.herokuapp.com${event.image_url}`} 
                     alt={event.title}
                     className="w-full h-48 object-cover"
                   />

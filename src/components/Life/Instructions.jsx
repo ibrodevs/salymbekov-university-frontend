@@ -10,7 +10,7 @@ const InstructionsPage = () => {
   // Ссылки из backend для student
   const [studentLinks, setStudentLinks] = useState([]);
   useEffect(() => {
-    fetch('https://su-med-backend-35d3d951c74b.herokuapp.com/api/home/navbar-links/', {
+    fetch('https://med-backend-d61c905599c2.herokuapp.com/api/home/navbar-links/', {
       headers: {
         'Accept-Language': i18n.language === 'kg' ? 'ky' : i18n.language,
         'Content-Type': 'application/json'
@@ -53,7 +53,7 @@ const InstructionsPage = () => {
     // Явно добавляем lang в URL
     let lang = i18n.language;
     if (lang === 'kg') lang = 'ky';
-    const url = `https://su-med-backend-35d3d951c74b.herokuapp.com/api/student-life/instruction-files/?lang=${lang}`;
+    const url = `https://med-backend-d61c905599c2.herokuapp.com/api/student-life/instruction-files/?lang=${lang}`;
     fetch(url, {
       headers: {
         'Content-Type': 'application/json',

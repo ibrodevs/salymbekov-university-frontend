@@ -70,7 +70,7 @@ const AcademicMobility = () => {
   const fetchAcademicMobilityData = async () => {
     try {
       setLoading(true);
-      const response = await fetch('https://su-med-backend-35d3d951c74b.herokuapp.com/api/student-life/api/data/academic_mobility_data/');
+      const response = await fetch('https://med-backend-d61c905599c2.herokuapp.com/api/student-life/api/data/academic_mobility_data/');
       
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);

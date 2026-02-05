@@ -9,7 +9,7 @@ const AcadOp = () => {
   // Ссылки из backend для student
   const [studentLinks, setStudentLinks] = useState([]);
   useEffect(() => {
-    fetch('https://su-med-backend-35d3d951c74b.herokuapp.com/api/home/navbar-links/', {
+    fetch('https://med-backend-d61c905599c2.herokuapp.com/api/home/navbar-links/', {
       headers: {
         'Accept-Language': i18n.language === 'kg' ? 'ky' : i18n.language,
         'Content-Type': 'application/json'
@@ -49,7 +49,7 @@ const AcadOp = () => {
 
   React.useEffect(() => {
     setLoading(true);
-    fetch("https://su-med-backend-35d3d951c74b.herokuapp.com/api/student-life/exchange-programs/")
+    fetch("https://med-backend-d61c905599c2.herokuapp.com/api/student-life/exchange-programs/")
       .then((res) => {
         if (!res.ok) throw new Error("Ошибка загрузки данных");
         return res.json();

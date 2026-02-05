@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { Bell, BookOpen, Calendar, DollarSign, Download, ExternalLink, Hospital, Pin, Trophy } from 'lucide-react';
 import SideMenu from '../common/SideMenu';
 
-const API_BASE_URL = 'https://su-med-backend-35d3d951c74b.herokuapp.com/api';
+const API_BASE_URL = 'https://med-backend-d61c905599c2.herokuapp.com/api';
 
 const NewsAnnouncements = () => {
   const { t, i18n } = useTranslation();
@@ -237,7 +237,7 @@ const NewsAnnouncements = () => {
                       {item.image_url ? (
                         <div className="md:w-1/4">
                           <img 
-                            src={item.image_url?.startsWith('http') ? item.image_url : `https://su-med-backend-35d3d951c74b.herokuapp.com${item.image_url}`} 
+                            src={item.image_url?.startsWith('http') ? item.image_url : `https://med-backend-d61c905599c2.herokuapp.com${item.image_url}`} 
                             alt={item.title}
                             className="w-full h-48 md:h-full object-cover"
                           />
@@ -324,7 +324,7 @@ const NewsAnnouncements = () => {
                   {item.image_url ? (
                     <div className="md:w-1/4">
                       <img 
-                        src={item.image_url?.startsWith('http') ? item.image_url : `https://su-med-backend-35d3d951c74b.herokuapp.com${item.image_url}`} 
+                        src={item.image_url?.startsWith('http') ? item.image_url : `https://med-backend-d61c905599c2.herokuapp.com${item.image_url}`} 
                         alt={item.title}
                         className="w-full h-48 md:h-full object-cover"
                       />

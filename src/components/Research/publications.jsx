@@ -60,7 +60,7 @@ const Publications = () => {
   const fetchData = async () => {
     try {
       setLoading(true);
-      const publicationsResponse = await fetch('https://su-med-backend-35d3d951c74b.herokuapp.com/research/api/publications/');
+      const publicationsResponse = await fetch('https://med-backend-d61c905599c2.herokuapp.com/research/api/publications/');
       
       if (!publicationsResponse.ok) {
         throw new Error('Failed to fetch data');
@@ -93,7 +93,7 @@ const Publications = () => {
       if (filters.author) params.append('authors_ru__icontains', filters.author);
       if (filters.journal) params.append('journal_ru__icontains', filters.journal);
 
-      const response = await fetch(`https://su-med-backend-35d3d951c74b.herokuapp.com/research/api/publications/?${params}`);
+      const response = await fetch(`https://med-backend-d61c905599c2.herokuapp.com/research/api/publications/?${params}`);
       
       if (!response.ok) {
         throw new Error('Failed to fetch filtered data');
@@ -162,7 +162,7 @@ const Publications = () => {
   const handleFileDownload = async (publicationId, fileName) => {
     try {
       // Fetch the detailed publication data to get the file URL
-      const response = await fetch(`https://su-med-backend-35d3d951c74b.herokuapp.com/research/api/publications/${publicationId}/`);
+      const response = await fetch(`https://med-backend-d61c905599c2.herokuapp.com/research/api/publications/${publicationId}/`);
       
       if (!response.ok) {
         throw new Error('Failed to fetch publication details');

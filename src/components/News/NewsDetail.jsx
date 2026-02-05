@@ -5,7 +5,7 @@ import { ArrowLeft, Calendar, Tag, Share2 } from "lucide-react";
 import SEOComponent from '../SEO/SEOComponent';
 import SideMenu from '../common/SideMenu';
 
-const API_BASE_URL = 'https://su-med-backend-35d3d951c74b.herokuapp.com/api';
+const API_BASE_URL = 'https://med-backend-d61c905599c2.herokuapp.com/api';
 
 const NewsDetail = () => {
   const { id } = useParams();
