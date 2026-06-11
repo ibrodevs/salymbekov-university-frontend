@@ -1,9 +1,9 @@
 import axios from 'axios';
 
 // Base configuration for infrastructure API calls
-const baseURL = 'https://su-med-backend-35d3d951c74b.herokuapp.com/api/infrastructure';
+const baseURL = 'http://localhost:8000/api/infrastructure';
 
-export const infrastructureAPI = axios.create({
+const infrastructureAPI = axios.create({
     baseURL,
     timeout: 10000,
     headers: {
