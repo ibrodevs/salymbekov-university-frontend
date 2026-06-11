@@ -41,13 +41,22 @@ const normalize = (post) => {
 
 const PER_PAGE = 100;
 
-const fetchPage = async (page) => {
-  const url = `${WP_API}?per_page=${PER_PAGE}&page=${page}&orderby=date&order=desc`;
+const fetchPage = async (page, perPage = PER_PAGE) => {
+  const url = `${WP_API}?per_page=${perPage}&page=${page}&orderby=date&order=desc`;
   const response = await fetch(url, { headers: { Accept: 'application/json' } });
   if (!response.ok) throw new Error(`HTTP ${response.status}`);
   const totalPages = parseInt(response.headers.get('X-WP-TotalPages') || '1', 10);
   const posts = await response.json();
   return { posts, totalPages };
+};
+
+// Быстрый запрос: только последние `count` новостей (одна лёгкая страница).
+// Используется для мгновенного первого рендера, пока подгружается остальное.
+export const getLatestNews = async (count = 3) => {
+  const { posts } = await fetchPage(1, count);
+  const news = posts.map(normalize).filter((item) => item.title);
+  news.forEach((item, i) => { item.isFeatured = i < 2; });
+  return news;
 };
 
 // Возвращает ВСЕ новости с официального сайта (постранично).
@@ -67,4 +76,4 @@ export const getOfficialNews = async () => {
   return news;
 };
 
-export default { getOfficialNews };
+export default { getOfficialNews, getLatestNews };

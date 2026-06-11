@@ -137,21 +137,27 @@ const NewsPreview = ({ maxItems = 3 }) => {
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-8">
-          {newsData.map((item) => (
-            <Link 
-              key={item.id} 
-              to={`/news/detail/${item.slug || item.id}`}
-              state={{ article: item }}
-              className="group block"
-            >
-              <div className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300 h-full">
-                <div className="aspect-w-16 aspect-h-9">
+          {newsData.map((item) => {
+            const categoryKey = item.category?.name || item.category;
+            const badgeStyle =
+              categoryKey === 'news' ? 'bg-blue-600/90 text-white' :
+              categoryKey === 'events' ? 'bg-emerald-600/90 text-white' :
+              'bg-amber-500/90 text-white';
+            return (
+              <Link
+                key={item.id}
+                to={`/news/detail/${item.slug || item.id}`}
+                state={{ article: item }}
+                className="group flex flex-col h-full bg-white rounded-2xl overflow-hidden shadow-sm ring-1 ring-gray-100 hover:shadow-2xl hover:ring-blue-100 hover:-translate-y-1.5 transition-all duration-300"
+              >
+                {/* Изображение с оверлеем и плавающей категорией */}
+                <div className="relative h-52 overflow-hidden">
                   {(() => {
                     const rawUrl = item.image_url || item.image;
                     const showFallback = !rawUrl || imgErrors[item.id];
                     if (showFallback) {
                       return (
-                        <div className="w-full h-48 flex items-center justify-center bg-gradient-to-br from-blue-600 to-indigo-700">
+                        <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-blue-600 to-indigo-700">
                           <span className="text-white/90 text-lg font-bold tracking-wide">SALYMBEKOV</span>
                         </div>
                       );
@@ -160,35 +166,42 @@ const NewsPreview = ({ maxItems = 3 }) => {
                       <img
                         src={getImageUrl(rawUrl)}
                         alt={item.title}
-                        className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
+                        loading="lazy"
+                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 ease-out"
                         onError={() => setImgErrors((prev) => ({ ...prev, [item.id]: true }))}
                       />
                     );
                   })()}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  <span className={`absolute top-4 left-4 px-3 py-1 rounded-full text-xs font-semibold backdrop-blur-sm shadow-sm ${badgeStyle}`}>
+                    {getCategoryName(categoryKey)}
+                  </span>
                 </div>
-                <div className="p-6">
-                  <div className="flex justify-between items-center mb-2">
-                    <span className="text-sm text-gray-500">
-                      {formatDate(item.published_at || item.date)}
-                    </span>
-                    <span className={`px-2 py-1 rounded-full text-xs font-semibold ${
-                      (item.category?.name || item.category) === 'news' ? 'bg-blue-100 text-blue-800' :
-                      (item.category?.name || item.category) === 'events' ? 'bg-green-100 text-green-800' :
-                      'bg-yellow-100 text-yellow-800'
-                    }`}>
-                      {getCategoryName(item.category?.name || item.category)}
-                    </span>
-                  </div>
-                  <h3 className="text-lg font-bold text-gray-800 mb-3 group-hover:text-blue-600 transition-colors line-clamp-2">
+
+                {/* Контент */}
+                <div className="flex flex-col flex-1 p-6">
+                  <span className="flex items-center gap-1.5 text-xs text-gray-400 mb-3">
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                    </svg>
+                    {formatDate(item.published_at || item.date)}
+                  </span>
+                  <h3 className="text-lg font-bold text-gray-800 mb-3 group-hover:text-blue-600 transition-colors line-clamp-2 leading-snug">
                     {item.title}
                   </h3>
-                  <p className="text-gray-600 text-sm line-clamp-3">
+                  <p className="text-gray-500 text-sm line-clamp-3 mb-4">
                     {item.summary}
                   </p>
+                  <span className="mt-auto inline-flex items-center gap-1.5 text-sm font-semibold text-blue-600 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300">
+                    {t('news.readMore', 'Читать далее')}
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                    </svg>
+                  </span>
                 </div>
-              </div>
-            </Link>
-          ))}
+              </Link>
+            );
+          })}
         </div>
 
         <div className="text-center">

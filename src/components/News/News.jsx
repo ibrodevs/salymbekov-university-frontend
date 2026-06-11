@@ -1,30 +1,49 @@
 import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Newspaper, Image as ImageIcon, ExternalLink } from 'lucide-react';
-import { getOfficialNews } from '../../services/officialNewsService';
+import { getOfficialNews, getLatestNews } from '../../services/officialNewsService';
 
 const News = () => {
   const { t, i18n } = useTranslation();
   const [news, setNews] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [loadingMore, setLoadingMore] = useState(false);
   const [error, setError] = useState(null);
 
   useEffect(() => {
+    let cancelled = false;
+
     const load = async () => {
       try {
-        setLoading(true);
         setError(null);
-        const data = await getOfficialNews();
-        setNews(data);
+        setLoading(true);
+
+        // 1) Быстро показываем 3 последние новости (одна лёгкая страница).
+        const latest = await getLatestNews(3);
+        if (cancelled) return;
+        setNews(latest);
+        setLoading(false);
+
+        // 2) В фоне догружаем все остальные новости и заменяем список.
+        setLoadingMore(true);
+        const all = await getOfficialNews();
+        if (cancelled) return;
+        setNews(all);
       } catch (err) {
+        if (cancelled) return;
         console.error('Official news fetch failed:', err);
         setError(err.message);
         setNews([]);
       } finally {
-        setLoading(false);
+        if (!cancelled) {
+          setLoading(false);
+          setLoadingMore(false);
+        }
       }
     };
+
     load();
+    return () => { cancelled = true; };
   }, []);
 
   const featured = news.filter((i) => i.isFeatured).slice(0, 2);
@@ -133,6 +152,14 @@ const News = () => {
                 </div>
               </a>
             ))}
+          </div>
+        )}
+
+        {/* Индикатор фоновой подгрузки остальных новостей */}
+        {loadingMore && (
+          <div className="flex items-center justify-center gap-3 py-10 text-slate-400">
+            <span className="inline-block animate-spin rounded-full h-5 w-5 border-2 border-slate-200 border-t-[#0A2647]"></span>
+            <span className="text-sm">{t('news.loadingMore', 'Загружаем остальные новости…')}</span>
           </div>
         )}
       </div>
