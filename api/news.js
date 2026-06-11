@@ -6,21 +6,34 @@ export default async function handler(req, res) {
       item: [
         ['content:encoded', 'contentEncoded'],
         ['media:content', 'mediaContent'],
+        // The feed uses a non-standard lowercase <pubdate> tag, which
+        // rss-parser does not map to item.pubDate. Capture it explicitly.
+        ['pubdate', 'pubDateRaw'],
       ],
     }
   });
 
+  // Pick the first real image from post content. WordPress lazy-loading puts a
+  // blank.gif placeholder in src and the actual image in data-src, so prefer
+  // data-src and skip placeholders / data-URIs.
+  const extractImage = (content) => {
+    const isReal = (u) => u && /^https?:\/\//i.test(u) && !/blank\.gif|data:image/i.test(u);
+    const tags = content.match(/<img[^>]+>/gi) || [];
+    for (const tag of tags) {
+      for (const attr of ['data-src', 'data-lazy-src', 'src']) {
+        const m = tag.match(new RegExp(`${attr}="([^"]+)"`, 'i'));
+        if (m && isReal(m[1])) return m[1];
+      }
+    }
+    return null;
+  };
+
   try {
     const feed = await parser.parseURL('https://salymbekov.com/ru/feed/');
-    
+
     const items = feed.items.map(item => {
-      let imageUrl = null;
-      
       const content = item.contentEncoded || item.content || '';
-      const imgMatch = content.match(/<img[^>]+src="([^">]+)"/);
-      if (imgMatch) {
-        imageUrl = imgMatch[1];
-      }
+      let imageUrl = extractImage(content);
 
       if (!imageUrl && item.mediaContent) {
         if (Array.isArray(item.mediaContent)) {
@@ -49,8 +62,8 @@ export default async function handler(req, res) {
         content: item.contentEncoded || item.content,
         content_ru: item.contentEncoded || item.content,
         image_url: imageUrl,
-        published_at: item.pubDate,
-        date: item.pubDate,
+        published_at: item.isoDate || item.pubDate || item.pubDateRaw || null,
+        date: item.isoDate || item.pubDate || item.pubDateRaw || null,
         category: { name: 'Salymbekov News' },
         is_external: true,
         original_link: item.link

@@ -12,6 +12,7 @@ const NewsPreview = ({ maxItems = 3 }) => {
   const [newsData, setNewsData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [imgErrors, setImgErrors] = useState({});
 
   useEffect(() => {
     fetchNews();
@@ -75,7 +76,9 @@ const NewsPreview = ({ maxItems = 3 }) => {
   };
 
   const formatDate = (dateString) => {
+    if (!dateString) return '';
     const date = new Date(dateString);
+    if (isNaN(date.getTime())) return ''; // avoid rendering "Invalid Date"
     return date.toLocaleDateString(i18n.language === 'kg' ? 'ky-KG' : i18n.language, {
       day: 'numeric',
       month: 'long',
@@ -143,11 +146,25 @@ const NewsPreview = ({ maxItems = 3 }) => {
             >
               <div className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300 h-full">
                 <div className="aspect-w-16 aspect-h-9">
-                  <img 
-                    src={getImageUrl(item.image_url || item.image)} 
-                    alt={item.title}
-                    className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
-                  />
+                  {(() => {
+                    const rawUrl = item.image_url || item.image;
+                    const showFallback = !rawUrl || imgErrors[item.id];
+                    if (showFallback) {
+                      return (
+                        <div className="w-full h-48 flex items-center justify-center bg-gradient-to-br from-blue-600 to-indigo-700">
+                          <span className="text-white/90 text-lg font-bold tracking-wide">SALYMBEKOV</span>
+                        </div>
+                      );
+                    }
+                    return (
+                      <img
+                        src={getImageUrl(rawUrl)}
+                        alt={item.title}
+                        className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
+                        onError={() => setImgErrors((prev) => ({ ...prev, [item.id]: true }))}
+                      />
+                    );
+                  })()}
                 </div>
                 <div className="p-6">
                   <div className="flex justify-between items-center mb-2">
