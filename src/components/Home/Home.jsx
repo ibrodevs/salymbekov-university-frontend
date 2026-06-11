@@ -108,10 +108,10 @@ const HeroSlider = () => {
                     : `url("${slide.photo}")`,
                 }}
               >
-                {!hasError && <div className="absolute inset-0 bg-black bg-opacity-30 z-10"></div>}
+                {!hasError && <div className="absolute inset-0 bg-black/30 z-10"></div>}
 
                 {hasError && (
-                  <div className="absolute inset-0 flex items-center justify-center text-white bg-gray-800 bg-opacity-75">
+                  <div className="absolute inset-0 flex items-center justify-center text-white bg-gray-800/75">
                     <div className="text-center p-4">
                       <p className="text-lg mb-2">Изображение не загрузилось</p>
                       <p className="text-sm break-all">{slide.photo}</p>
@@ -144,7 +144,7 @@ const HeroSlider = () => {
         <>
           <button
             onClick={prevSlide}
-            className="absolute left-2 sm:left-4 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-80 hover:bg-opacity-100 text-blue-900 p-3 sm:p-4 rounded-full shadow-lg transition-all duration-300 z-20 hover:scale-110"
+            className="absolute left-2 sm:left-4 top-1/2 transform -translate-y-1/2 bg-white/80 hover:bg-white text-blue-900 p-3 sm:p-4 rounded-full shadow-lg transition-all duration-300 z-20 hover:scale-110"
           >
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
               <path d="M15 18l-6-6 6-6"/>
@@ -152,7 +152,7 @@ const HeroSlider = () => {
           </button>
           <button
             onClick={nextSlide}
-            className="absolute right-2 sm:right-4 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-80 hover:bg-opacity-100 text-blue-900 p-3 sm:p-4 rounded-full shadow-lg transition-all duration-300 z-20 hover:scale-110"
+            className="absolute right-2 sm:right-4 top-1/2 transform -translate-y-1/2 bg-white/80 hover:bg-white text-blue-900 p-3 sm:p-4 rounded-full shadow-lg transition-all duration-300 z-20 hover:scale-110"
           >
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
               <path d="M9 18l6-6-6-6"/>
@@ -168,8 +168,8 @@ const HeroSlider = () => {
             <button
               key={index}
               onClick={() => goToSlide(index)}
-              className={`w-8 sm:w-12 h-2 rounded-full bg-white bg-opacity-40 transition-all duration-300 hover:bg-opacity-60 ${
-                currentSlide === index ? 'bg-opacity-100' : ''
+              className={`w-8 sm:w-12 h-2 rounded-full transition-all duration-300 ${
+                currentSlide === index ? 'bg-white' : 'bg-white/40 hover:bg-white/60'
               }`}
             ></button>
           ))}
