@@ -5,6 +5,10 @@
       "destination": "https://med-backend-d61c905599c2.herokuapp.com/research/$1"
     },
     {
+      "source": "/proxy-backend/api/(.*)",
+      "destination": "https://med-backend-d61c905599c2.herokuapp.com/api/$1"
+    },
+    {
       "source": "/proxy-backend/(.*)",
       "destination": "https://med-backend-d61c905599c2.herokuapp.com/api/$1"
     },
