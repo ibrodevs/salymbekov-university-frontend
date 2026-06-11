@@ -62,16 +62,6 @@ const Startups = () => {
           </p>
         </div>
 
-        {/* Статистика */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-5 mb-10">
-          {stats.map((s, i) => (
-            <div key={i} className="bg-white rounded-xl border border-slate-200 shadow-sm p-6 text-center">
-              <div className="text-2xl md:text-3xl font-bold text-[#0A2647] mb-1">{s.value}</div>
-              <div className="text-sm text-slate-500">{s.label}</div>
-            </div>
-          ))}
-        </div>
-
         {error || startups.length === 0 ? (
           <div className="text-center py-12 bg-white rounded-xl border border-slate-200">
             <Rocket className="w-14 h-14 text-slate-300 mx-auto mb-4" />

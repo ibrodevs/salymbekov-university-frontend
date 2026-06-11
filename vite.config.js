@@ -11,7 +11,7 @@ export default defineConfig({
     port: 3000,
     proxy: {
       '/proxy-backend': {
-        target: 'http://127.0.0.1:8000',
+        target: 'https://med-backend-d61c905599c2.herokuapp.com',
         changeOrigin: true,
         secure: false,
         // Сервисы используют два стиля путей: одни уже содержат "/api/",
@@ -25,7 +25,7 @@ export default defineConfig({
         }
       },
       '/media': {
-        target: 'http://127.0.0.1:8000',
+        target: 'https://med-backend-d61c905599c2.herokuapp.com',
         changeOrigin: true,
         secure: false,
         rewrite: (path) => path.replace(/^\/media/, '/media')
