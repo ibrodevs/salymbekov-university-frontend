@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 
-const API_BASE_URL = import.meta.env.DEV 
-  ? '/proxy-backend/api/' 
-  : (import.meta.env.VITE_API_BASE_URL || import.meta.env.VITE_API_BASE_URL || '/proxy-backend');
+// Both the dev (vite) and prod (vercel) proxies map this path to the backend's
+// /api/. Keep the trailing slash so `${API_BASE_URL}banners/` stays well-formed.
+const API_BASE_URL = '/proxy-backend/api/';
 
 const HeroSlider = () => {
   const { i18n } = useTranslation();
